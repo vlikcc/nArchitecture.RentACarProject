@@ -14,7 +14,7 @@ public static class PersistenceServiceRegistration
     {
         services.AddDbContext<BaseDbContext>(options =>
                                                  options.UseSqlServer(
-                                                     configuration.GetConnectionString("RentACarConnectionString")));
+                                                     configuration.GetConnectionString("RentACarConnectionString"),o=>o.UseQuerySplittingBehavior(QuerySplittingBehavior.SplitQuery)));
         services.AddScoped<IAdditionalServiceRepository, AdditionalServiceRepository>();
         services.AddScoped<IBrandRepository, BrandRepository>();
         services.AddScoped<ICarRepository, CarRepository>();
